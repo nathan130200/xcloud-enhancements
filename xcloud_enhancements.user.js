@@ -59,18 +59,16 @@
 
     // FIXME: Sometimes CSS don't set even forcing with "!important" tag.
     function fitVideoToScreen() {
-        var el = document.querySelector('#game-stream video');
+        var streamElement = document.querySelector('#game-stream video');
+        var time = 500;
 
-        if (el) {
-            el.style.objectFit = 'fill';
-            return;
+        if (streamElement) {
+            streamElement.style.objectFit = 'fill';
+            time = 5000;
         }
 
-        setTimeout(fitVideoToScreen, 1000);
+        setTimeout(fitVideoToScreen, time);
     }
 
-    // Ensure each game started will test for element.
-    window.onpageshow = e => {
-        fitVideoToScreen();
-    };
+    fitVideoToScreen();
 })();
